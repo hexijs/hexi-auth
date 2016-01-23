@@ -17,10 +17,14 @@
   "bugs": {
     "url": "https://github.com/zkochan/hexi-auth/issues"
   },
+  "files": [
+    "index.js"
+  ],
   "homepage": "https://github.com/zkochan/hexi-auth#readme",
   "devDependencies": {
     "chai": "^3.4.1",
     "coveralls": "^2.11.6",
+    "hexi": "^0.2.0",
     "istanbul": "^0.4.2",
     "mocha": "^2.3.4"
   }
