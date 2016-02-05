@@ -1,6 +1,6 @@
 'use strict'
 module.exports = function(server, opts) {
-  server.pre('route', (next, opts) => {
+  server.route.pre((next, opts) => {
     let authOpts = opts && opts.config && opts.config.auth
     if (authOpts === false) return next(opts)
 

@@ -7,9 +7,9 @@ const request = require('supertest')
 describe('auth', function() {
   let server
 
-  beforeEach(function(next) {
-    server = new hexi.Server()
-    server.register([hexiAuth], next)
+  beforeEach(function() {
+    server = hexi()
+    return server.register(hexiAuth)
   })
 
   it('should disable authentication on a route', function(done) {
