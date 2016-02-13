@@ -13,7 +13,7 @@ describe('auth', function() {
   })
 
   it('should disable authentication on a route', function(done) {
-    server.task('auth', (req, res, next) => res.status(401).end())
+    server.auth((req, res, next) => res.status(401).end())
 
     server.route({
       path: '/',
@@ -32,7 +32,7 @@ describe('auth', function() {
   })
 
   it('should forbid unauthenticated request', function(done) {
-    server.task('auth', (req, res, next) => {
+    server.auth((req, res, next) => {
       if (req.headers.foo === 'bar') next()
       res.status(401).end()
     })
@@ -51,7 +51,7 @@ describe('auth', function() {
   })
 
   it('should allow authenticated request', function(done) {
-    server.task('auth', (req, res, next) => {
+    server.auth((req, res, next) => {
       if (req.headers.foo === 'bar') next()
       res.status(401).end()
     })

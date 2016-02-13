@@ -1,12 +1,17 @@
 'use strict'
 module.exports = function(server, opts) {
+  let authMiddleware
+
   server.route.pre((next, opts) => {
     let authOpts = opts && opts.config && opts.config.auth
-    if (authOpts === false) return next(opts)
+    if (authOpts === false || !authMiddleware) return next(opts)
 
-    opts.task =  opts.task || []
-    opts.task = ['auth'].concat(opts.task)
+    opts.handler = [authMiddleware].concat(opts.handler)
     next(opts)
+  })
+
+  server.decorate('server', 'auth', function(middleware) {
+    authMiddleware = middleware
   })
 }
 
