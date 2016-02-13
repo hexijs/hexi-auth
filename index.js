@@ -6,7 +6,7 @@ module.exports = function(server, opts) {
     let authOpts = opts && opts.config && opts.config.auth
     if (authOpts === false || !authMiddleware) return next(opts)
 
-    opts.handler = [authMiddleware].concat(opts.handler)
+    opts.handler.splice(-1, 0, authMiddleware)
     next(opts)
   })
 
