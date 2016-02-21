@@ -29,7 +29,8 @@
   "homepage": "https://github.com/hexijs/hexi-auth#readme",
   "devDependencies": {
     "chai": "^3.4.1",
-    "hexi": "^0.7.1",
+    "express": "^4.13.4",
+    "hexi": "^0.8.0",
     "istanbul": "^0.4.2",
     "mocha": "^2.3.4",
     "sinon": "^1.17.3",

@@ -1,8 +1,8 @@
 'use strict'
-module.exports = function(server, opts) {
+module.exports = (server, opts) => {
   let initialized = false
 
-  server.decorate('auth', function(authMiddleware) {
+  server.decorate('auth', authMiddleware => {
     if (initialized) {
       throw new Error('auth middleware cannot be specified more than once')
     }
@@ -16,7 +16,7 @@ module.exports = function(server, opts) {
     server.route.pre((next, opts) => {
       const authOpts = opts && opts.config && opts.config.auth
 
-      if (authOpts === false) return next(opts)
+      if (authOpts === false) return next.applySame()
 
       next(Object.assign(opts, {
         pre: opts.pre.concat(authMiddleware),
