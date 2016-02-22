@@ -8,6 +8,31 @@ An auth extension for hexi
 [![Coverage Status](https://coveralls.io/repos/hexijs/hexi-auth/badge.svg?branch=master&service=github)](https://coveralls.io/github/hexijs/hexi-auth?branch=master)
 
 
+## Installation
+
+```
+npm install --save hexi-auth
+```
+
+
+## Usage
+
+```js
+const server = hexi()
+
+server.register([
+  {
+    register: require('hexi-auth'),
+  },
+])
+.then(() => {
+  server.auth((req, res, next) => {
+    
+  })
+})
+```
+
+
 ## License
 
-MIT
+MIT © [Zoltan Kochan](https://www.kochan.io)
