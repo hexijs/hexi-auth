@@ -36,5 +36,8 @@
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
     "supertest": "^1.1.0"
+  },
+  "dependencies": {
+    "strict-once": "^0.1.0"
   }
 }

@@ -1,14 +1,8 @@
 'use strict'
+const strictOnce = require('strict-once')
+
 module.exports = (server, opts) => {
-  let initialized = false
-
-  server.decorate('auth', authMiddleware => {
-    if (initialized) {
-      throw new Error('auth middleware cannot be specified more than once')
-    }
-
-    initialized = true
-
+  const setAuth = authMiddleware => {
     if (typeof authMiddleware !== 'function') {
       throw new Error('auth middleware should be a function')
     }
@@ -22,7 +16,11 @@ module.exports = (server, opts) => {
         pre: opts.pre.concat(authMiddleware),
       }))
     })
-  })
+  }
+
+  setAuth.onceError = 'auth middleware cannot be specified more than once'
+
+  server.decorate('auth', strictOnce(setAuth))
 }
 
 module.exports.attributes = {
