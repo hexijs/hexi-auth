@@ -20,7 +20,7 @@ module.exports = (server, opts) => {
 
   setAuth.onceError = 'auth middleware cannot be specified more than once'
 
-  server.decorate('auth', strictOnce(setAuth))
+  server.decorate('server', 'auth', strictOnce(setAuth))
 }
 
 module.exports.attributes = {
